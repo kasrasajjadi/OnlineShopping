@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<style type= "text/css">
+
+    label {
+        display: inline-block;
+        width: 200px;
+        margin: 5px;
+        text-align: left;
+    }
+    input[type=text], input[type=password], select {
+        display: inline-block;
+        width: 200px;
+    }
+    input[type=radio] {
+        margin-left: 45px;
+    }
+    input[type=checkbox] {
+        margin-right: 190px;
+    }
+
+
+
+    button {
+        padding: 5px;
+        margin: 10px;
+    }
+
+    #box
+    {
+        border: 2px solid black;
+        padding: 2px 1px;
+        outline-width: 2px;
+        outline-style: solid;
+
+    }
+
+    h1 {
+        color: blue;
+        border: 1.5px solid black;
+        font-family: sans-serif;
+        font-size: 1.5em;
+        text-transform: uppercase;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+    }
+
+</style>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+<div id= "box" align="center"
+     th:switch="${brandList}">
+    <h2 th:case="null">No brands yet!</h2>
+    <div th:case="*">
+        <h2>Registered brands List:</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Brand title</th>
+                <th>Brand description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="brand : ${brandList}">
+                <td><textarea th:field="*{brand.title}"></textarea></td>
+                <td><textarea th:field="*{brand.description}"></textarea></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/index">Home Page</a></p>
+</div>
+
+</body>
+</html>
